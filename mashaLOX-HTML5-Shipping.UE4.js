@@ -1158,18 +1158,18 @@ $(document).ready(function() {
 		var utilityJsDownload = fetchOrDownloadAndStore(db, Module.locateFile('https://rawcdn.githack.com/Jessusys/testnapivo/6360afa2b7042d74a42b69ea45c232db3d213eba/Utility.js')).then(addScriptToDom);
 		var dataDownload =
 /* // The following code would download and store the .data file as a Blob, which should be more efficient than loading an ArrayBuffer. However that seems to be buggy, so avoid it for now.
-			fetchOrDownloadAndStore(db, Module.locateFile('https://dl.dropboxusercontent.com/1zyamzy1hczwiip/mashaLOX-HTML5-Shipping.data?dl=0')).then(function(dataBlob) {
+			fetchOrDownloadAndStore(db, Module.locateFile('mashaLOX-HTML5-Shipping.data')).then(function(dataBlob) {
 				return readBlobToArrayBuffer(dataBlob).then(function(dataArrayBuffer) {
 					Module['preloadedPackages'] = {};
-					Module['preloadedPackages'][Module.locateFile('https://dl.dropboxusercontent.com/1zyamzy1hczwiip/mashaLOX-HTML5-Shipping.data?dl=0')] = dataArrayBuffer;
+					Module['preloadedPackages'][Module.locateFile('mashaLOX-HTML5-Shipping.data')] = dataArrayBuffer;
 					return dataJsDownload.then(addScriptToDom);
 				})
 			});
 */
 // Instead as a fallback, download as ArrayBuffer. (TODO: Figure out the bugs with the above, and switch to using that one instead)
-			fetchOrDownloadAndStore(db, Module.locateFile('mashaLOX-HTML5-Shipping.data'), 'arraybuffer').then(function(dataArrayBuffer) {
+			fetchOrDownloadAndStore(db, Module.locateFile('https://dl.dropboxusercontent.com/1zyamzy1hczwiip/mashaLOX-HTML5-Shipping.data?dl=0'), 'arraybuffer').then(function(dataArrayBuffer) {
 				Module['preloadedPackages'] = {};
-				Module['preloadedPackages'][Module.locateFile('mashaLOX-HTML5-Shipping.data')] = dataArrayBuffer;
+				Module['preloadedPackages'][Module.locateFile('https://dl.dropboxusercontent.com/1zyamzy1hczwiip/mashaLOX-HTML5-Shipping.data?dl=0')] = dataArrayBuffer;
 				return dataJsDownload.then(addScriptToDom);
 			});
 
